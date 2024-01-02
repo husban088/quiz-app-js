@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/quiz.css">
+
+</head>
+<body>
+
+        <!-- =============== DEVELOP MAN NAME ===================== -->
+
+        <div class="develop__man">
+            <h1 class="develop__husban">Develop by Husban Ahmad</h1>
+        </div>
+    
+
+     <!-- =============== INPUT BUTTON SUBMIT ===================== -->
+
+
+    <div class="quiz__cont" id="quiz__ques-one">
+
+        <div class="welcome__txt">
+            <form class="welcome__form" name="welcome__form" onsubmit="submitForm(event)">
+
+                <div id="mail__group">
+                    <input type="text" class="mail__input" id="text" placeholder="Your Name" name="name"> 
+                    <label for="text" class="mail__label">Your Name</label>
+                </div>
+
+                <div class="quiz__btn">
+                    <button type="submit" class="start__btn" id="str__btn" style="display: none; width: 20rem; margin: 0 auto;">Start Quiz</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- ============================= QUESTION ANSWER =============================== -->
+
+    <div class="quiz__cont quiz__cont-two" style="display: none; " id="quiz__ques">
+        <div class="quiz" style="width: 800px; height: 500px; margin-right: auto; margin-left: auto; margin-top: 10rem;">
+            <div class="quiz__header">
+                <div class="quiz__user">
+                    <h4>Welcome! <span id="name"></span></h4>
+                </div>
+                <div class="quiz__timer">
+                    <!-- <span class="time" id="timrr">00 : 00</span> -->
+
+                    <span><span id="min">01 Mins</span></span>
+                    <span><span id="sec">60 Sec</span></span>
+
+                </div>
+            </div>
+            <div class="quiz__body">
+            <div id="questions">
+                <!-- <h2>Q1. What is the full form of RAM?</h2>
+
+                <ul class="option__group">
+                    <li class="option">option 1</li>
+                    <li class="option">option 2</li>
+                    <li class="option">option 3</li>
+                    <li class="option">option 4</li>
+                </ul> -->
+            </div>
+
+                <button class="next__btn" onclick="next()" style="display: none;">Next</button>
+
+            </div>
+        </div>
+     </div>
+
+
+
+     <!-- ========================= RESULTT CONTAINER ========================== -->
+
+     <div class="quiz__cont quiz__cont-three" id="quiz__ques-three" style="width: 50rem; margin: 0 auto; display: none;">
+
+        <p><span id="remarks"></span></p>
+
+        <h3 class="username"> <span id="name_nd"></span></h3>
+
+        <img id="emoji" src="images/sadd.jpg" alt="sademoji">
+
+  
+        <div class="grade-details">
+          <p class="attempt__ans">Attempts : <span id="attemptt">0</span></p>
+          <p class="wrong__answ">Wrong Answers : <span id="wrong-answers">0</span></p>
+          <p class="right__answ">Right Answers : <span id="right-answers">0</span></p>
+          <p class="grade__scrore">Grade : <span id="grade-percentage"></span></p>
+        </div>
+
+        <div class="try__btn">
+            <button id="ty__btn">Try Again</button>
+    
+        </div>
+
+        <div class="home__btn">
+            <a href="index.html" class="go__home"><button id="hm__btn">Go to home</button></a>
+        </div>
+
+        </div>
+
+    
+    <script src="js/quiz.js"></script>
+
+</body>
+</html>
