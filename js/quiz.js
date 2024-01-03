@@ -79,12 +79,13 @@ var inputField = true;
 
 
 
+// console.log(names)
 function submitForm(e) {
     e.preventDefault();
-    
-    let names = document.forms["welcome__form"]["name"].value;
-  
-    sessionStorage.setItem("name", names);
+    var names = document.querySelector('.mail__input').value;
+document.querySelector("#name").textContent = document.querySelector('.mail__input').value;
+  document.querySelector(".opop").textContent = document.querySelector(".mail__input").value;
+    // sessionStorage.setItem("name", names);
 
     quizCon_two.style.display = "block";
 
@@ -93,13 +94,12 @@ function submitForm(e) {
     setInterval(mytime, 1000);
 }
 
-let user_namee = sessionStorage.getItem("name");
+// let user_namee = sessionStorage.getItem("name");
+console.log(document.querySelector('.mail__input').value)
 
-document.querySelector("#name").innerHTML = user_namee;
+// let user_nameee = sessionStorage.getItem("name");
 
-let user_nameee = sessionStorage.getItem("name");
-
-document.querySelector("#name_nd").innerHTML = user_nameee;
+// document.querySelector("#name_nd").innerHTML = user_nameee;
 
 
 inpt.addEventListener("keyup", function () {
@@ -167,7 +167,10 @@ function next() {
 
         quizCon_one.style.display = "none";
 
+        t_again();
+
         return;
+
     }
 
     question_count++;
@@ -289,31 +292,7 @@ function toggleActive() {
 
 let quizThre = document.querySelector(".quiz__cont-two")
 
-let tryBtn = document.getElementById("ty__btn");
+// let tryAgain = document.querySelector(".try--");
 
-tryBtn.addEventListener('click', tryAgain);
-
-function tryAgain() {
-    quizCon_three.style.display = "none"
-
-    quizCon_two.style.display = "block";
-
-    quizCon_one.style.display = "none";
-
-    r_Score = 0;
-    w_Score = 0;
-    rightAns.innerHTML = 0;
-    wrongAns.innerHTML = 0;
-    s = 0;
-    gradePerc.innerHTML = s + "%";
-    sec = 60;
-    min = 1;
-    document.getElementById('sec').innerHTML = "60 Sec";
-    document.getElementById('min').innerHTML = "1 Mins";
-    a_q = 0;
-    attemptScore.innerHTML = a_q;
-    setInterval(mytime, 1000);
-
-}
-
+// tryAgain.addEventListener("click", t_again);
 
