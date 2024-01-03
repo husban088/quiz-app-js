@@ -71,6 +71,18 @@ body {
       width: 40rem;
     }
 
+   #quiz__ques-one {
+    height: 30rem;
+   }
+
+   #quiz__ques {
+    transform: translateY(-6rem);
+   }
+
+   #quiz__ques-three {
+    transform: translateY(2rem) !important;
+   }
+
     .develop__husban {
       font-size: 2.5rem;
     }
@@ -505,7 +517,7 @@ body {
 }
 
 #emoji {
-  width: 25%;
+  width: 30%;
   border-radius: 50%;
   object-fit: cover;
   background-size: 100%;
