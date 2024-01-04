@@ -203,7 +203,13 @@ body {
     grid-template-rows: 60px auto;
     background-color: #fff;
     border-radius: 3px;
-    margin-top: 10rem;
+    transform: translateY(10rem);
+  }
+
+  @media only screen and (max-width: 1330px) {
+    #quiz__ques {
+      margin-bottom: 10rem !important;
+    }
   }
 
   @media only screen and (max-width: 800px) {
@@ -322,7 +328,7 @@ body {
   @media only screen and (max-width: 320px) {
     .quiz {
       width: 275px !important;
-      transform: translateX(-0.3rem);
+      transform: translate(-0.3rem, 10rem);
     }
 
     .quiz__user {
@@ -595,6 +601,6 @@ body {
 
 @media only screen and (max-width: 1330px) {
   .develop__quiz {
-    transform: translateY(10rem);
+    transform: translateY(7rem);
   }
 }
