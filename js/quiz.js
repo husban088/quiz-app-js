@@ -1,5 +1,4 @@
 
-
 window.onload = function () {
     show(0);
 }
@@ -70,6 +69,8 @@ let quizCon_two = document.getElementById("quiz__ques");
 let quizCon_one = document.getElementById("quiz__ques-one");
 let quizCon_three = document.getElementById("quiz__ques-three");
 
+let develop__quiz = document.querySelector(".develop__quiz");
+
 
 
 
@@ -83,14 +84,14 @@ var inputField = true;
 function submitForm(e) {
     e.preventDefault();
     var names = document.querySelector('.mail__input').value;
-document.querySelector("#name").textContent = document.querySelector('.mail__input').value;
-  document.querySelector(".opop").textContent = document.querySelector(".mail__input").value;
+    document.querySelector("#name").textContent = document.querySelector('.mail__input').value;
+    document.querySelector(".opop").textContent = document.querySelector(".mail__input").value;
     // sessionStorage.setItem("name", names);
 
     quizCon_two.style.display = "block";
 
     quizCon_one.style.display = "none";
-          
+
     setInterval(mytime, 1000);
 }
 
@@ -166,8 +167,6 @@ function next() {
         quizCon_two.style.display = "none";
 
         quizCon_one.style.display = "none";
-
-        t_again();
 
         return;
 
@@ -257,6 +256,7 @@ let question_count = 0;
 function show(count) {
     let question = document.getElementById("questions");
 
+
     // question.innerHTML = "<h2>" + questions[count].question + "</h2>"; 
     question.innerHTML = `<h2> Q${count + 1}. ${questions[count].question} </h2>
     <ul class="option__group">
@@ -296,3 +296,9 @@ let quizThre = document.querySelector(".quiz__cont-two")
 
 // tryAgain.addEventListener("click", t_again);
 
+// function tryAgain() {
+//     quizCon_two.style.display = "block";
+
+//     quizCon_one.style.display = "none";
+//     quizCon_three.style.display = "none";
+// }
