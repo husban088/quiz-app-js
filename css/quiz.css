@@ -20,21 +20,21 @@ body {
 }
 
 .develop__man {
-  background-color: #fff;
-  padding: 3rem 3rem;
-  width: 45rem;
-  position: relative;
-  border-radius: 3px;
-  border-bottom: 5px solid #1BADA3;
-  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  border-bottom: 2px solid #0ef;
+  background-color: #000;
+  text-align: center;
+  padding: 2.5rem;
+  z-index: 1;
 }
 
 .develop__husban {
-  position: absolute;
-  left: 2rem;
-  top: 1rem;
-  color: #000;
+  color: #fff;
   font-size: 3rem;
+  font-weight: 600;
 }
 
 .quiz__cont {
@@ -42,6 +42,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+#quiz__ques-one {
+  margin-bottom: 1.5rem;
+  margin-bottom: -7rem;
 }
 
 @media only screen and (max-width: 900px) {
@@ -71,41 +76,24 @@ body {
       width: 40rem;
     }
 
-   /* #quiz__ques-one {
-    height: 40rem;
-   } */
-
-   #quiz__ques {
-    transform: translateY(-8.5rem) !important;
-   }
-
-   #quiz__ques-three {
-    transform: translateY(2rem) !important;
-   }
-
     .develop__husban {
       font-size: 2.5rem;
     }
+
+   #quiz__ques-three {
+    transform: translateY(15rem) !important;
+   }
   }
 
   #quiz__ques {
     transform: translateY(-6rem);
+    margin-bottom: 23rem !important;
    }
 
   @media only screen and (max-width: 450px) {
     .mail__input {
       width: 35rem;
     }
-
-    .develop__husban {
-      font-size: 2rem;
-      left: 2rem;
-      top: 1.6rem;
-    }
-
-    .develop__man {
-      width: 33rem !important;
-    } 
   }
 
   @media only screen and (max-width: 400px) {
@@ -114,29 +102,26 @@ body {
       font-size: 1.8rem !important;
       padding: 1.3rem 0;
     }
+
+    .develop__husban {
+      font-size: 2rem;
+    }
+
+    .footer__txt {
+      font-size: 1.8rem !important;
+    }
+
   }
 
   @media only screen and (max-width: 370px) {
     .mail__input {
       width: 30rem;
     }
-
-    .develop__man {
-      width: 28rem !important;
-    } 
-
-    .develop__husban {
-      font-size: 1.8rem;
-    }
   }
 
   @media only screen and (max-width: 320px) {
     .mail__input {
       width: 27rem;
-    }
-
-    .develop__husban {
-      font-size: 1.8rem;
     }
   }
 
@@ -206,11 +191,11 @@ body {
     transform: translateY(10rem);
   }
 
-  @media only screen and (max-width: 1330px) {
+  /* @media only screen and (max-width: 1330px) {
     #quiz__ques {
       margin-bottom: 10rem;
     }
-  }
+  } */
 
   @media only screen and (max-width: 800px) {
     .quiz {
@@ -254,10 +239,6 @@ body {
       padding: 15px 20px !important;
       font-size: 1.7rem !important;
     }
-
-    .develop__man {
-      width: 40rem;
-    }
     
     #questions h2 {
       font-size: 1.8rem;
@@ -283,10 +264,7 @@ body {
       font-size: 1.5rem !important;
     }
 
-    .develop__man {
-      width: 40rem;
-    }
-    
+
     #questions h2 {
       font-size: 1.8rem;
     }
@@ -311,10 +289,6 @@ body {
       font-size: 1.5rem !important;
     }
 
-    .develop__man {
-      width: 40rem;
-    }
-    
     #questions h2 {
       font-size: 1.8rem;
     }
@@ -339,10 +313,6 @@ body {
     .quiz__timer {
       padding: 18px 12px !important;
       font-size: 1.3rem !important;
-    }
-
-    .develop__man {
-      width: 40rem;
     }
     
     #questions h2 {
@@ -459,26 +429,38 @@ body {
   }
 
   #quiz__ques-three {
-    transform: translateY(5rem);
+    transform: translateY(15rem);
     height: 55rem;
     background-color: #fff;
     border-radius: 5px;
     text-align: center;
-    margin-bottom: 8rem;
+    margin-bottom: 20rem;
     padding-top: 2rem;
     border: 10px groove goldenrod;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 530px) {
   #quiz__ques-three {
     width: 40rem !important;
     transform: translateY(5rem);
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 430px) {
   #quiz__ques-three {
-    width: 35rem !important;
+    width: 37rem !important;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  #quiz__ques-three {
+    width: 32rem !important;
+  }
+}
+
+@media only screen and (max-width: 330px) {
+  #quiz__ques-three {
+    width: 29rem !important;
   }
 }
 
@@ -532,31 +514,10 @@ body {
   background-size: 100%;
 }
 
-#ty__btn {
-  outline: none;
-  font-size: 2rem;
-  padding: 1rem 4rem;
-  color: #fff;
-  border-radius: 25px;
-  background-image: linear-gradient(to right bottom, #2EC7BD, #1BADA3);
-  overflow-x: hidden;
-  transition: all .8s;
-  border: none;
-  cursor: pointer;
-  transition: all .2s;
-  letter-spacing: 1px;
-  font-weight: 600;
-}
-
-#ty__btn:hover {
-  transform: translateY(-1px);
-  background-image: linear-gradient(to right bottom, #1BADA3, #2EC7BD);
-}
-
 #hm__btn {
   outline: none;
   font-size: 2rem;
-  padding: 1rem 3rem;
+  padding: 1rem 3.5rem;
   color: #fff;
   border-radius: 25px;
   background-image: linear-gradient(to right bottom, #2EC7BD, #1BADA3);
@@ -602,5 +563,33 @@ body {
 @media only screen and (max-width: 1330px) {
   .develop__quiz {
     transform: translateY(7rem);
+  }
+}
+
+.quiz__footer {
+  text-align: center;
+  background-color: #000;
+  padding: 2rem;
+  border-top: 2px solid #0ef;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.footer__txt {
+  color: #ffff;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+#quiz__ques {
+  transform: translateY(3rem);
+  margin-bottom: 8rem;
+  z-index: -1;
+}
+
+@media only screen and (max-width: 1330px) {
+  #quiz__ques {
+    margin-bottom: 20rem;
   }
 }

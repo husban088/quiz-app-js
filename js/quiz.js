@@ -290,15 +290,4 @@ function toggleActive() {
 
 
 
-let quizThre = document.querySelector(".quiz__cont-two")
-
-// let tryAgain = document.querySelector(".try--");
-
-// tryAgain.addEventListener("click", t_again);
-
-// function tryAgain() {
-//     quizCon_two.style.display = "block";
-
-//     quizCon_one.style.display = "none";
-//     quizCon_three.style.display = "none";
-// }
+let quizThre = document.querySelector(".quiz__cont-two");
