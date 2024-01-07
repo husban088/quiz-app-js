@@ -86,7 +86,8 @@ function submitForm(e) {
     var names = document.querySelector('.mail__input').value;
     document.querySelector("#name").textContent = document.querySelector('.mail__input').value;
     document.querySelector(".opop").textContent = document.querySelector(".mail__input").value;
-    // sessionStorage.setItem("name", names);
+
+    localStorage.setItem("name", names);
 
     quizCon_two.style.display = "block";
 
@@ -94,6 +95,51 @@ function submitForm(e) {
 
     setInterval(mytime, 1000);
 }
+
+// TIMEEEEE ////
+
+let min = 1;
+let sec = 60;
+
+
+function mytime() {
+
+    sec--;
+    if (sec < 10) {
+        document.getElementById('sec').innerHTML = "0" + sec + " Sec";
+    } else {
+        document.getElementById('sec').innerHTML = sec + " Sec";
+    }
+    if (sec <= 0) {
+        sec = 60;
+        min--;
+    }
+    if (sec === 0 || min === 0) {
+        document.getElementById('sec').style.color = 'red';
+    }
+
+    if (min === -1) {
+        clearInterval(quizTime);
+        percTAGE();
+        quizCon_three.style.display = "block"
+        quizCon_two.style.display = "none";
+    }
+
+    if (min < 10) {
+        document.getElementById('min').innerHTML = "0" + min + " Mins";
+    } else {
+        document.getElementById('min').innerHTML = min + " Mins";
+    }
+
+    localStorage.setItem("Minutes", min);
+    localStorage.setItem("Seconds", sec);
+
+}
+
+var quizTime = setInterval(mytime, 1000);
+
+clearInterval(quizTime);
+
 
 // let user_namee = sessionStorage.getItem("name");
 console.log(document.querySelector('.mail__input').value)
@@ -136,6 +182,9 @@ function next() {
 
     let user_answer = document.querySelector("li.option.active").innerHTML;
 
+    localStorage.setItem("questions", user_answer);
+
+    localStorage.getItem(`player name is ${user_answer}`);
 
     let wrongAns = document.getElementById("wrong-answers");
     let rightAns = document.getElementById("right-answers");
@@ -155,6 +204,7 @@ function next() {
 
         wrongAns.innerHTML = w_Score;
         attemptScore.innerHTML = t_Score;
+
     }
 
 
@@ -208,47 +258,12 @@ function percTAGE() {
         emoji.src = "images/sadd.jpg";
     }
 
+    localStorage.setItem("Attempt answers", t_Score);
+    localStorage.setItem("Right answers", r_Score);
+    localStorage.setItem("Wrong answers", w_Score);
+    localStorage.setItem("Grade", perc);
+
 }
-
-// TIMEEEEE ////
-
-let min = 1;
-let sec = 60;
-
-
-function mytime() {
-
-    sec--;
-    if (sec < 10) {
-        document.getElementById('sec').innerHTML = "0" + sec + " Sec";
-    } else {
-        document.getElementById('sec').innerHTML = sec + " Sec";
-    }
-    if (sec <= 0) {
-        sec = 60;
-        min--;
-    }
-    if (sec === 0 || min === 0) {
-        document.getElementById('sec').style.color = 'red';
-    }
-
-    if (min === -1) {
-        clearInterval(quizTime);
-        percTAGE();
-        quizCon_three.style.display = "block"
-        quizCon_two.style.display = "none";
-    }
-
-    if (min < 10) {
-        document.getElementById('min').innerHTML = "0" + min + " Mins";
-    } else {
-        document.getElementById('min').innerHTML = min + " Mins";
-    }
-}
-
-var quizTime = setInterval(mytime, 1000);
-
-clearInterval(quizTime);
 
 
 let question_count = 0;
@@ -291,3 +306,11 @@ function toggleActive() {
 
 
 let quizThre = document.querySelector(".quiz__cont-two");
+
+let namei = localStorage.getItem("name");
+
+document.querySelector("#name").innerHTML = namei;
+
+let nameix = localStorage.getItem("name");
+
+document.querySelector(".opop").innerHTML = nameix;

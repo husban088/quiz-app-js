@@ -569,8 +569,7 @@ body {
 .quiz__footer {
   text-align: center;
   background-color: #000;
-  padding: 2rem;
-  border-top: 2px solid #0ef;
+  padding: 1rem;
   position: fixed;
   bottom: 0;
   right: 0;
