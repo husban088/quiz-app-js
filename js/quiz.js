@@ -177,14 +177,32 @@ let r_Score = 0;
 let w_Score = 0;
 let t_Score = 0;
 
+function show(count) {
+    let question = document.getElementById("questions");
+
+
+
+    // console.log(`you at question Q${count + 1}. ${localStorage.getItem(questions[count].question)}`)
+
+
+    // question.innerHTML = "<h2>" + questions[count].question + "</h2>"; 
+    question.innerHTML = `<h2> Q${count + 1}. ${questions[count].question} </h2>
+    <ul class="option__group">
+    <li class="option">${questions[count].options[0]}</li>
+    <li class="option">${questions[count].options[1]}</li>
+    <li class="option">${questions[count].options[2]}</li>
+    <li class="option">${questions[count].options[3]}</li>
+    </ul>`;
+
+    toggleActive();
+}
+
+let question_count = 0;
 
 function next() {
 
     let user_answer = document.querySelector("li.option.active").innerHTML;
 
-    localStorage.setItem("questions", user_answer);
-
-    localStorage.getItem(`player name is ${user_answer}`);
 
     let wrongAns = document.getElementById("wrong-answers");
     let rightAns = document.getElementById("right-answers");
@@ -224,6 +242,7 @@ function next() {
 
     question_count++;
     show(question_count);
+    localStorage.setItem("You at question", questions[question_count].question);
 }
 
 let percenTage = document.getElementById("grade-percentage");
@@ -266,23 +285,6 @@ function percTAGE() {
 }
 
 
-let question_count = 0;
-
-function show(count) {
-    let question = document.getElementById("questions");
-
-
-    // question.innerHTML = "<h2>" + questions[count].question + "</h2>"; 
-    question.innerHTML = `<h2> Q${count + 1}. ${questions[count].question} </h2>
-    <ul class="option__group">
-    <li class="option">${questions[count].options[0]}</li>
-    <li class="option">${questions[count].options[1]}</li>
-    <li class="option">${questions[count].options[2]}</li>
-    <li class="option">${questions[count].options[3]}</li>
-    </ul>`;
-
-    toggleActive();
-}
 
 function toggleActive() {
     let option = document.querySelectorAll("li.option");
