@@ -121,6 +121,14 @@ body {
     .mail__input {
       width: 30rem;
     }
+
+    #remarks {
+      font-size: 2rem !important;
+    }
+
+    .opop {
+      font-size: 2rem !important;
+    }
   }
 
   @media only screen and (max-width: 320px) {
@@ -442,10 +450,24 @@ body {
     background-color: #fff;
     border-radius: 5px;
     text-align: center;
-    border: 10px groove #000;
+    border: 10px groove goldenrod;
     margin-bottom: 28rem;
     padding-top: 2rem;
 } 
+
+
+@media only screen and (max-width: 530px) {
+  #quiz__ques-three {
+    height: 50rem;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  #quiz__ques-three {
+    height: 47rem;
+  }
+}
+
 
 @media only screen and (max-width: 530px) {
   #quiz__ques-three {
