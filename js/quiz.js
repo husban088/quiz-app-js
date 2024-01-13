@@ -3,6 +3,7 @@ window.onload = function () {
     show(0);
 }
 
+
 // 1ST QUESTION ANSWER QUIZZ//
 
 let questions = [
@@ -63,21 +64,21 @@ let questions = [
     }
 ];
 
+
 // // INPUT BUTTON SUBMIT//
 
 let quizCon_two = document.getElementById("quiz__ques");
+
 let quizCon_one = document.getElementById("quiz__ques-one");
+
 let quizCon_three = document.getElementById("quiz__ques-three");
 
 let develop__quiz = document.querySelector(".develop__quiz");
 
 
-
-
 let inpt = document.getElementById("text");
 
 var inputField = true;
-
 
 
 // console.log(names)
@@ -87,14 +88,28 @@ function submitForm(e) {
     document.querySelector("#name").textContent = document.querySelector('.mail__input').value;
     document.querySelector(".opop").textContent = document.querySelector(".mail__input").value;
 
-    localStorage.setItem("name", names);
-
-    quizCon_two.style.display = "block";
-
-    quizCon_one.style.display = "none";
-
     setInterval(mytime, 1000);
 }
+
+let start_btn = document.querySelector(".start__btn");
+
+let valid = document.getElementById("valid");
+
+start_btn.addEventListener('click', function() {
+    let no_space = inpt.value.trim();
+    let validd = no_space.split("").join("");
+    let b_s = validd.length;
+    if (b_s == "") {
+        valid.innerHTML = "Name is Required";
+        inpt.style.borderBottom = "2px solid red";
+    }else if (b_s <= 2) {
+        valid.innerHTML = "Name Atleast Contain 3 or More Words!";
+    }else {
+        quizCon_two.style.display = "block";
+        quizCon_one.style.display = "none";
+    }
+});
+
 
 // TIMEEEEE ////
 
@@ -110,6 +125,7 @@ function mytime() {
     } else {
         document.getElementById('sec').innerHTML = sec + " Sec";
     }
+
     if (sec <= 0) {
         sec = 60;
         min--;
@@ -130,10 +146,6 @@ function mytime() {
     } else {
         document.getElementById('min').innerHTML = min + " Mins";
     }
-
-    localStorage.setItem("Minutes", min);
-    localStorage.setItem("Seconds", sec);
-
 }
 
 var quizTime = setInterval(mytime, 1000);
@@ -150,6 +162,7 @@ console.log(document.querySelector('.mail__input').value)
 
 
 inpt.addEventListener("keyup", function () {
+
     if (inputField) {
         btnss.style.display = "block";
     }
@@ -157,6 +170,7 @@ inpt.addEventListener("keyup", function () {
     if (inpt.value.length == 0) {
         btnss.style.display = "none";
     }
+
 })
 
 
@@ -165,6 +179,25 @@ inpt.addEventListener("keyup", function () {
 let btns = document.querySelector(".next__btn");
 let btnss = document.getElementById("str__btn");
 
+
+function show(count) {
+    let question = document.getElementById("questions");
+
+
+    question.innerHTML = `<h2> Q${count + 1}. ${questions[count].question} </h2>
+    <ul class="option__group">
+    <li class="option">${questions[count].options[0]}</li>
+    <li class="option">${questions[count].options[1]}</li>
+    <li class="option">${questions[count].options[2]}</li>
+    <li class="option">${questions[count].options[3]}</li>
+    </ul>`;
+
+    toggleActive();
+}
+
+
+
+let question_count = 0;
 
 let wrong_Ans = 0;
 let right_Ans = 0;
@@ -177,32 +210,9 @@ let r_Score = 0;
 let w_Score = 0;
 let t_Score = 0;
 
-function show(count) {
-    let question = document.getElementById("questions");
-
-
-
-    // console.log(`you at question Q${count + 1}. ${localStorage.getItem(questions[count].question)}`)
-
-
-    // question.innerHTML = "<h2>" + questions[count].question + "</h2>"; 
-    question.innerHTML = `<h2> Q${count + 1}. ${questions[count].question} </h2>
-    <ul class="option__group">
-    <li class="option">${questions[count].options[0]}</li>
-    <li class="option">${questions[count].options[1]}</li>
-    <li class="option">${questions[count].options[2]}</li>
-    <li class="option">${questions[count].options[3]}</li>
-    </ul>`;
-
-    toggleActive();
-}
-
-let question_count = 0;
-
 function next() {
 
     let user_answer = document.querySelector("li.option.active").innerHTML;
-
 
     let wrongAns = document.getElementById("wrong-answers");
     let rightAns = document.getElementById("right-answers");
@@ -235,15 +245,13 @@ function next() {
         quizCon_two.style.display = "none";
 
         quizCon_one.style.display = "none";
-
         return;
-
     }
 
     question_count++;
     show(question_count);
-    localStorage.setItem("You at question", questions[question_count].question);
 }
+
 
 let percenTage = document.getElementById("grade-percentage");
 
@@ -277,17 +285,12 @@ function percTAGE() {
         emoji.src = "images/sadd.jpg";
     }
 
-    localStorage.setItem("Attempt answers", t_Score);
-    localStorage.setItem("Right answers", r_Score);
-    localStorage.setItem("Wrong answers", w_Score);
-    localStorage.setItem("Grade", perc);
-
 }
-
 
 
 function toggleActive() {
     let option = document.querySelectorAll("li.option");
+
 
     for (let i = 0; i < option.length; i++) {
 
@@ -300,7 +303,9 @@ function toggleActive() {
                     option[j].classList.remove("active");
                 }
             }
+
             option[i].classList.add("active");
+
         }
     }
 }
@@ -308,11 +313,3 @@ function toggleActive() {
 
 
 let quizThre = document.querySelector(".quiz__cont-two");
-
-let namei = localStorage.getItem("name");
-
-document.querySelector("#name").innerHTML = namei;
-
-let nameix = localStorage.getItem("name");
-
-document.querySelector(".opop").innerHTML = nameix;
