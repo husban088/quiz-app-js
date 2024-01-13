@@ -111,6 +111,10 @@ body {
       font-size: 1.8rem !important;
     }
 
+    #valid {
+      font-size: 1.5rem !important;
+    }
+
   }
 
   @media only screen and (max-width: 370px) {
@@ -122,6 +126,10 @@ body {
   @media only screen and (max-width: 320px) {
     .mail__input {
       width: 27rem;
+    }
+
+    #valid {
+      font-size: 1.3rem !important;
     }
   }
 
@@ -434,9 +442,9 @@ body {
     background-color: #fff;
     border-radius: 5px;
     text-align: center;
+    border: 10px groove #000;
     margin-bottom: 28rem;
     padding-top: 2rem;
-    border: 10px groove goldenrod;
 } 
 
 @media only screen and (max-width: 530px) {

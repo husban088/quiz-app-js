@@ -87,8 +87,6 @@ function submitForm(e) {
     var names = document.querySelector('.mail__input').value;
     document.querySelector("#name").textContent = document.querySelector('.mail__input').value;
     document.querySelector(".opop").textContent = document.querySelector(".mail__input").value;
-
-    setInterval(mytime, 1000);
 }
 
 let start_btn = document.querySelector(".start__btn");
@@ -107,6 +105,7 @@ start_btn.addEventListener('click', function() {
     }else {
         quizCon_two.style.display = "block";
         quizCon_one.style.display = "none";
+        setInterval(mytime, 1000);
     }
 });
 
