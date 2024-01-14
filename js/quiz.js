@@ -85,6 +85,9 @@ var inputField = true;
 function submitForm(e) {
     e.preventDefault();
     var names = document.querySelector('.mail__input').value;
+
+    localStorage.setItem("Player Name", names);
+
     document.querySelector("#name").textContent = document.querySelector('.mail__input').value;
     document.querySelector(".opop").textContent = document.querySelector(".mail__input").value;
 }
@@ -93,16 +96,40 @@ let start_btn = document.querySelector(".start__btn");
 
 let valid = document.getElementById("valid");
 
+inpt.addEventListener("keyup", function () {
+
+    if (inputField) {
+        btnss.style.display = "block";
+    }
+
+    if (inpt.value.length == 0) {
+        btnss.style.display = "none";
+        valid.innerHTML = "";
+    }
+
+    if (inpt.value.length == 2) {
+        inpt.style.borderBottom = "4px solid red";
+        valid.innerHTML = "Name Atleast Contain 3 or More Words!";
+    }
+
+    if (inpt.value.length == 3) {
+        inpt.style.borderBottom = "5px solid green";
+        valid.innerHTML = "";
+    }
+})
+
+
 start_btn.addEventListener('click', function() {
     let no_space = inpt.value.trim();
     let validd = no_space.split("").join("");
     let b_s = validd.length;
     if (b_s == "") {
         valid.innerHTML = "Name is Required";
-        inpt.style.borderBottom = "2px solid red";
+        inpt.style.borderBottom = "4px solid red";
     }else if (b_s <= 2) {
         valid.innerHTML = "Name Atleast Contain 3 or More Words!";
-    }else {
+        inpt.style.borderBottom = "4px solid red";
+    } else {
         quizCon_two.style.display = "block";
         quizCon_one.style.display = "none";
         setInterval(mytime, 1000);
@@ -145,6 +172,8 @@ function mytime() {
     } else {
         document.getElementById('min').innerHTML = min + " Mins";
     }
+    localStorage.setItem("Take Minutes", min);
+    localStorage.setItem("Take Seconds", sec);
 }
 
 var quizTime = setInterval(mytime, 1000);
@@ -160,28 +189,14 @@ console.log(document.querySelector('.mail__input').value)
 // document.querySelector("#name_nd").innerHTML = user_nameee;
 
 
-inpt.addEventListener("keyup", function () {
-
-    if (inputField) {
-        btnss.style.display = "block";
-    }
-
-    if (inpt.value.length == 0) {
-        btnss.style.display = "none";
-    }
-
-})
-
 
 // NEXT BUTTON /////
 
 let btns = document.querySelector(".next__btn");
 let btnss = document.getElementById("str__btn");
 
-
 function show(count) {
     let question = document.getElementById("questions");
-
 
     question.innerHTML = `<h2> Q${count + 1}. ${questions[count].question} </h2>
     <ul class="option__group">
@@ -192,6 +207,7 @@ function show(count) {
     </ul>`;
 
     toggleActive();
+
 }
 
 
@@ -231,7 +247,6 @@ function next() {
 
         wrongAns.innerHTML = w_Score;
         attemptScore.innerHTML = t_Score;
-
     }
 
 
@@ -249,6 +264,11 @@ function next() {
 
     question_count++;
     show(question_count);
+    localStorage.setItem("You at question", questions[question_count].question);
+    localStorage.setItem("answer of question", questions[question_count].answer);
+    localStorage.setItem("Attempt Questions", t_Score);
+    localStorage.setItem("Correct Answers", r_Score);
+    localStorage.setItem("Wrong Answers", w_Score);
 }
 
 
@@ -283,7 +303,7 @@ function percTAGE() {
         remarks.style.color = 'red';
         emoji.src = "images/sadd.jpg";
     }
-
+    localStorage.setItem("Grade", perc);
 }
 
 
@@ -312,3 +332,9 @@ function toggleActive() {
 
 
 let quizThre = document.querySelector(".quiz__cont-two");
+
+let go__home = document.querySelector(".go__home");
+
+go__home.addEventListener("click", function() {
+    localStorage.setItem("Restart", go__home);
+})
