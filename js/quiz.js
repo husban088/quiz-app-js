@@ -1,6 +1,84 @@
 
-window.onload = function () {
-    show(0);
+window.onload = function() {
+
+    let user_Name = localStorage.getItem("PlayerName");
+
+    document.querySelector(".mail__input").innerHTML = user_Name;
+
+    console.log(user_Name);
+
+
+
+    let user_Min = localStorage.getItem("TakeMinutes");
+
+    document.querySelector("#min").innerHTML = user_Min;
+
+    console.log(user_Min);
+   
+
+    let user_Sec = localStorage.getItem("TakeSeconds");
+
+    document.querySelector("#sec").innerHTML = user_Sec;
+
+    console.log(user_Sec);
+
+
+
+    let user_Qans = localStorage.getItem("YouAtQuestion");
+
+    document.querySelector("#questions").innerHTML = user_Qans;
+
+    console.log(user_Qans);
+
+
+
+    let user_Attem = localStorage.getItem("AttemptQuestions");
+
+    document.querySelector("#attemptt").innerHTML = user_Attem;
+
+    console.log(user_Attem);
+
+
+
+    let user_Corr = localStorage.getItem("CorrectAnswers");
+
+    document.querySelector("#right-answers").innerHTML = user_Corr;
+
+    console.log(user_Corr);
+
+  
+
+    let user_Wro = localStorage.getItem("WrongAnswers");
+
+    document.querySelector("#wrong-answers").innerHTML = user_Wro;
+
+    console.log(user_Wro);
+
+
+
+    let user_Grad = localStorage.getItem("Grade");
+
+    document.querySelector("#grade-percentage").innerHTML = user_Grad;
+
+    console.log(user_Grad);
+
+}
+
+function show(count) {
+
+    let question = document.getElementById("questions");
+
+    question.innerHTML = `<h2> Q${count + 1}. ${questions[count].question} </h2>
+        <ul class="option__group">
+        <li class="option">${questions[count].options[0]}</li>
+        <li class="option">${questions[count].options[1]}</li>
+        <li class="option">${questions[count].options[2]}</li>
+        <li class="option">${questions[count].options[3]}</li>
+        </ul>`;
+
+    localStorage.setItem("YouAtQuestion", question.innerText);
+
+    toggleActive();
 }
 
 
@@ -84,13 +162,16 @@ var inputField = true;
 // console.log(names)
 function submitForm(e) {
     e.preventDefault();
+
     var names = document.querySelector('.mail__input').value;
 
-    localStorage.setItem("Player Name", names);
+    localStorage.setItem("PlayerName", names);
 
     document.querySelector("#name").textContent = document.querySelector('.mail__input').value;
     document.querySelector(".opop").textContent = document.querySelector(".mail__input").value;
+    show(0);
 }
+
 
 let start_btn = document.querySelector(".start__btn");
 
@@ -119,14 +200,14 @@ inpt.addEventListener("keyup", function () {
 })
 
 
-start_btn.addEventListener('click', function() {
+start_btn.addEventListener('click', function () {
     let no_space = inpt.value.trim();
     let validd = no_space.split("").join("");
     let b_s = validd.length;
     if (b_s == "") {
         valid.innerHTML = "Name is Required";
         inpt.style.borderBottom = "4px solid red";
-    }else if (b_s <= 2) {
+    } else if (b_s <= 2) {
         valid.innerHTML = "Name Atleast Contain 3 or More Words!";
         inpt.style.borderBottom = "4px solid red";
     } else {
@@ -172,8 +253,8 @@ function mytime() {
     } else {
         document.getElementById('min').innerHTML = min + " Mins";
     }
-    localStorage.setItem("Take Minutes", min);
-    localStorage.setItem("Take Seconds", sec);
+    localStorage.setItem("TakeMinutes", min);
+    localStorage.setItem("TakeSeconds", sec);
 }
 
 var quizTime = setInterval(mytime, 1000);
@@ -195,20 +276,6 @@ console.log(document.querySelector('.mail__input').value)
 let btns = document.querySelector(".next__btn");
 let btnss = document.getElementById("str__btn");
 
-function show(count) {
-    let question = document.getElementById("questions");
-
-    question.innerHTML = `<h2> Q${count + 1}. ${questions[count].question} </h2>
-    <ul class="option__group">
-    <li class="option">${questions[count].options[0]}</li>
-    <li class="option">${questions[count].options[1]}</li>
-    <li class="option">${questions[count].options[2]}</li>
-    <li class="option">${questions[count].options[3]}</li>
-    </ul>`;
-
-    toggleActive();
-
-}
 
 
 
@@ -264,11 +331,11 @@ function next() {
 
     question_count++;
     show(question_count);
-    localStorage.setItem("You at question", questions[question_count].question);
-    localStorage.setItem("answer of question", questions[question_count].answer);
-    localStorage.setItem("Attempt Questions", t_Score);
-    localStorage.setItem("Correct Answers", r_Score);
-    localStorage.setItem("Wrong Answers", w_Score);
+    // localStorage.setItem("YouAtQuestion", questions[question_count].question);
+    // localStorage.setItem("AnswerOfQuestion", questions[question_count].answer);
+    localStorage.setItem("AttemptQuestions", t_Score);
+    localStorage.setItem("CorrectAnswers", r_Score);
+    localStorage.setItem("WrongAnswers", w_Score);
 }
 
 
@@ -335,6 +402,7 @@ let quizThre = document.querySelector(".quiz__cont-two");
 
 let go__home = document.querySelector(".go__home");
 
-go__home.addEventListener("click", function() {
+go__home.addEventListener("click", function () {
+
     localStorage.setItem("Restart", go__home);
-})
+});
