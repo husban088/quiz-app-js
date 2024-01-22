@@ -141,6 +141,20 @@ body {
     }
   }
 
+  @media only screen and (max-width: 280px) {
+    .mail__input {
+      width: 23.5rem;
+    }
+
+    .develop__husban {
+      font-size: 1.6rem;
+    }
+
+    .footer__txt {
+      font-size: 1.4rem !important;
+    }
+  }
+
   .mail__label {
     font-size: 1.6rem;
     margin-left: 2rem;

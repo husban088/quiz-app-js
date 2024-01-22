@@ -1,88 +1,7 @@
 
-window.onload = function() {
 
-    let user_Name = localStorage.getItem("PlayerName");
-
-    document.querySelector(".mail__input").innerHTML = user_Name;
-
-    console.log(user_Name);
-
-
-
-    let user_Min = localStorage.getItem("TakeMinutes");
-
-    document.querySelector("#min").innerHTML = user_Min;
-
-    console.log(user_Min);
-   
-
-    let user_Sec = localStorage.getItem("TakeSeconds");
-
-    document.querySelector("#sec").innerHTML = user_Sec;
-
-    console.log(user_Sec);
-
-
-
-    let user_Qans = localStorage.getItem("YouAtQuestion");
-
-    document.querySelector("#questions").innerHTML = user_Qans;
-
-    console.log(user_Qans);
-
-
-
-    let user_Attem = localStorage.getItem("AttemptQuestions");
-
-    document.querySelector("#attemptt").innerHTML = user_Attem;
-
-    console.log(user_Attem);
-
-
-
-    let user_Corr = localStorage.getItem("CorrectAnswers");
-
-    document.querySelector("#right-answers").innerHTML = user_Corr;
-
-    console.log(user_Corr);
-
-  
-
-    let user_Wro = localStorage.getItem("WrongAnswers");
-
-    document.querySelector("#wrong-answers").innerHTML = user_Wro;
-
-    console.log(user_Wro);
-
-
-
-    let user_Grad = localStorage.getItem("Grade");
-
-    document.querySelector("#grade-percentage").innerHTML = user_Grad;
-
-    console.log(user_Grad);
-
-}
-
-function show(count) {
-
-    let question = document.getElementById("questions");
-
-    question.innerHTML = `<h2> Q${count + 1}. ${questions[count].question} </h2>
-        <ul class="option__group">
-        <li class="option">${questions[count].options[0]}</li>
-        <li class="option">${questions[count].options[1]}</li>
-        <li class="option">${questions[count].options[2]}</li>
-        <li class="option">${questions[count].options[3]}</li>
-        </ul>`;
-
-    localStorage.setItem("YouAtQuestion", question.innerText);
-
-    toggleActive();
-}
-
-
-// 1ST QUESTION ANSWER QUIZZ//
+///////////////////////////////
+//// QUESTION ANSWER QUIZZ ////
 
 let questions = [
     {
@@ -143,23 +62,62 @@ let questions = [
 ];
 
 
-// // INPUT BUTTON SUBMIT//
+///////////////////////
+///// VARIABLES ///////
 
 let quizCon_two = document.getElementById("quiz__ques");
-
+let quizThre = document.querySelector(".quiz__cont-two");
 let quizCon_one = document.getElementById("quiz__ques-one");
-
 let quizCon_three = document.getElementById("quiz__ques-three");
-
 let develop__quiz = document.querySelector(".develop__quiz");
-
-
 let inpt = document.getElementById("text");
-
+let start_btn = document.querySelector(".start__btn");
+let valid = document.getElementById("valid");
+let btns = document.querySelector(".next__btn");
+let btnss = document.getElementById("str__btn");
+let question_count = 0;
+let wrong_Ans = 0;
+let right_Ans = 0;
+let wrongAns = document.getElementById("wrong-answers");
+let rightAns = document.getElementById("right-answers");
+let gradePerc = document.getElementById("grade-percentage");
+let r_Score = 0;
+let w_Score = 0;
+let t_Score = 0;
+let percenTage = document.getElementById("grade-percentage");
+let remarks = document.getElementById("remarks");
+let emoji = document.getElementById("emoji");
+emoji.src = "images/happy.jpg";
 var inputField = true;
+let go__home = document.querySelector(".go__home");
+let min = 1;
+let sec = 60;
+let attemptScore = document.getElementById("attemptt");
 
 
-// console.log(names)
+///////////////////////////////////////
+///// SHOW QUESTIONS AND OPTIONS //////
+
+function show(count) {
+
+    let question = document.getElementById("questions");
+
+    question.innerHTML = `<h2> Q${count + 1}. ${questions[count].question} </h2>
+        <ul class="option__group">
+        <li class="option">${questions[count].options[0]}</li>
+        <li class="option">${questions[count].options[1]}</li>
+        <li class="option">${questions[count].options[2]}</li>
+        <li class="option">${questions[count].options[3]}</li>
+        </ul>`;
+
+    localStorage.setItem("YouAtQuestion", question.innerText);
+
+    toggleActive();
+}
+
+/////////////////////////
+////// SUBMIT FORM //////
+
 function submitForm(e) {
     e.preventDefault();
 
@@ -167,15 +125,19 @@ function submitForm(e) {
 
     localStorage.setItem("PlayerName", names);
 
-    document.querySelector("#name").textContent = document.querySelector('.mail__input').value;
-    document.querySelector(".opop").textContent = document.querySelector(".mail__input").value;
+    localStorage.setItem("quizStarted", true);
+
+    const nameValue = localStorage.getItem("PlayerName");
+
+
+    document.querySelector("#name").textContent = nameValue;
+    document.querySelector(".opop").textContent = nameValue;
+
     show(0);
 }
 
-
-let start_btn = document.querySelector(".start__btn");
-
-let valid = document.getElementById("valid");
+/////////////////////////////////////////
+//// BUTTON SHOW AND HIDE FUNCTION //////
 
 inpt.addEventListener("keyup", function () {
 
@@ -199,6 +161,8 @@ inpt.addEventListener("keyup", function () {
     }
 })
 
+////////////////////////////////
+//// INPUT FIELD VALIDATION /////
 
 start_btn.addEventListener('click', function () {
     let no_space = inpt.value.trim();
@@ -218,11 +182,8 @@ start_btn.addEventListener('click', function () {
 });
 
 
-// TIMEEEEE ////
-
-let min = 1;
-let sec = 60;
-
+/////////////////////
+//// QUIZ TIMER /////
 
 function mytime() {
 
@@ -258,98 +219,62 @@ function mytime() {
 }
 
 var quizTime = setInterval(mytime, 1000);
-
 clearInterval(quizTime);
 
 
-// let user_namee = sessionStorage.getItem("name");
-console.log(document.querySelector('.mail__input').value)
 
-// let user_nameee = sessionStorage.getItem("name");
-
-// document.querySelector("#name_nd").innerHTML = user_nameee;
-
-
-
-// NEXT BUTTON /////
-
-let btns = document.querySelector(".next__btn");
-let btnss = document.getElementById("str__btn");
-
-
-
-
-let question_count = 0;
-
-let wrong_Ans = 0;
-let right_Ans = 0;
-
-let wrongAns = document.getElementById("wrong-answers");
-let rightAns = document.getElementById("right-answers");
-let gradePerc = document.getElementById("grade-percentage");
-
-let r_Score = 0;
-let w_Score = 0;
-let t_Score = 0;
+///////////////////////
+//// NEXT BUTTON //////
 
 function next() {
 
     let user_answer = document.querySelector("li.option.active").innerHTML;
 
-    let wrongAns = document.getElementById("wrong-answers");
-    let rightAns = document.getElementById("right-answers");
-    let attemptScore = document.getElementById("attemptt");
-
     if (user_answer == questions[question_count].answer) {
-        t_Score++
+        t_Score++;
         r_Score++;
-
         rightAns.innerHTML = r_Score;
         attemptScore.innerHTML = t_Score;
+        localStorage.setItem("CorrectAnswers", r_Score);
+        localStorage.setItem("AttemptQuestions", t_Score);
     }
 
-    if (user_answer !== questions[question_count].answer) {
+      if (user_answer !== questions[question_count].answer) {
         t_Score++;
         w_Score++;
-
-        wrongAns.innerHTML = w_Score;
+        rightAns.innerHTML = w_Score;
         attemptScore.innerHTML = t_Score;
+        localStorage.setItem("WrongAnswers", w_Score);
+        localStorage.setItem("AttemptQuestions", t_Score);
     }
 
 
     if (question_count == questions.length - 1) {
 
-        percTAGE();
+        localStorage.setItem("quizComplete", "true")
+
+        // percTAGE();
 
         quizCon_three.style.display = "block"
 
         quizCon_two.style.display = "none";
 
         quizCon_one.style.display = "none";
+        progressPage();
         return;
     }
 
     question_count++;
     show(question_count);
-    // localStorage.setItem("YouAtQuestion", questions[question_count].question);
-    // localStorage.setItem("AnswerOfQuestion", questions[question_count].answer);
-    localStorage.setItem("AttemptQuestions", t_Score);
-    localStorage.setItem("CorrectAnswers", r_Score);
-    localStorage.setItem("WrongAnswers", w_Score);
+
+    localStorage.setItem("quizCurrent", question_count);
 }
 
-
-let percenTage = document.getElementById("grade-percentage");
-
-let remarks = document.getElementById("remarks");
-
-let emoji = document.getElementById("emoji");
-
-emoji.src = "images/happy.jpg";
-
+////////////////////////////////////////////////
+////// QUIZ RESULT PERCENTAGE AND GRADE ////////
 
 function percTAGE() {
-    let perc = r_Score * 100 / questions.length;
+    let perc = localStorage.getItem("CorrectAnswers") * 100 / questions.length;
     let s = Math.floor(perc);
     percenTage.innerHTML = s + "%";
 
@@ -373,6 +298,8 @@ function percTAGE() {
     localStorage.setItem("Grade", perc);
 }
 
+///////////////////////////////////
+///// OPTIONS ACTIVE FUNCTION /////
 
 function toggleActive() {
     let option = document.querySelectorAll("li.option");
@@ -396,13 +323,97 @@ function toggleActive() {
     }
 }
 
+//////////////////////////
+///// PROGRESS PAGE //////
 
+function progressPage(){
+    const nameVal = localStorage.getItem("PlayerName");
+    document.querySelector("#name").textContent = nameVal;
+    document.querySelector(".opop").textContent = nameVal;
 
-let quizThre = document.querySelector(".quiz__cont-two");
+    quizCon_three.style.display = "block";
+    quizCon_two.style.display = "none";
+    quizCon_one.style.display = "none";
 
-let go__home = document.querySelector(".go__home");
+    percTAGE();
+    rightAns.innerHTML =localStorage.getItem("CorrectAnswers"); 
+    attemptScore.innerHTML = questions.length;
+    wrongAns.innerHTML = localStorage.getItem("WrongAnswers");
+    attemptScore.innerHTML = questions.length;
+}
 
-go__home.addEventListener("click", function () {
+///////////////////////////
+////// HOME FUNCTION //////
 
-    localStorage.setItem("Restart", go__home);
-});
+function initalPage(e) {
+    e.preventDefault();
+    localStorage.clear();
+    location.href = "index.html";
+}
+
+go__home.addEventListener("click", initalPage);
+
+///////////////////////////////////
+///// WINDOW ONLOAD FUNCTION //////
+
+window.onload = function () {
+
+    const quizStarted = localStorage.getItem("quizStarted");
+
+    const nameVale = localStorage.getItem("PlayerName");
+    document.querySelector("#name").textContent = nameVale;
+    document.querySelector(".opop").textContent = nameVale;
+
+    if (quizStarted === "true") {
+        // User has started the quiz
+        quizCon_one.style.display = "none";
+
+        // localStorage.setItem("TakeMinutes", min);
+        // localStorage.setItem("TakeSeconds", sec);
+
+        const quizComplete = localStorage.getItem("quizComplete");
+
+        if (quizComplete === "true") {
+            // User has completed the quiz, show the progress page
+          progressPage();
+
+        } else {
+
+            // Check if the user has a saved question index
+            const savedIndex = localStorage.getItem("quizCurrent");
+
+            setInterval(mytime, 1000);
+
+            if (savedIndex !== null) {
+                // User is in the middle of the quiz, show the question based on the saved index
+                question_count = parseInt(savedIndex);
+
+                // Check if the user has already completed all questions
+                const allquizComplete = localStorage.getItem("quizComplete");
+
+                if (allquizComplete === "true") {
+                    // If all questions are completed, show the progress page
+                    progressPage();
+
+                } else {
+                    // If not all questions are completed, show the question
+                    show(question_count);
+                    quizCon_two.style.display = "block";
+                }
+            } else {
+                // User hasn't started the quiz or there is no saved index
+                // Show the first question
+                show(0);
+                quizCon_two.style.display = "block";
+            }
+
+            // Retrieve and set the progress data
+            r_Score = parseInt(localStorage.getItem("CorrectAnswers") || 0);
+            w_Score = parseInt(localStorage.getItem("WrongAnswers") || 0);
+        }
+    } else {
+        // User hasn't started the quiz, show the initial container
+        quizCon_two.style.display = "none";
+    }
+
+}
